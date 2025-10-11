@@ -1,0 +1,33 @@
+const slideTrack = document.querySelector('.slide-track');
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+const modalCorreo = document.getElementById("modalCorreo");
+const modalTelefono = document.getElementById("modalTelefono");
+let index = 0;
+
+document.getElementById('nextBtn').onclick = () => {
+  if (index < totalSlides - 3) index++;
+  else index = 0;
+  updateSlider();
+};
+
+document.getElementById('prevBtn').onclick = () => {
+  if (index > 0) index--;
+  else index = totalSlides - 3;
+  updateSlider();
+};
+
+function updateSlider() {
+  slideTrack.style.transform = `translateX(-${index * (100 / 3)}%)`;
+}
+
+document.getElementById("correo").onclick = () => modalCorreo.style.display = "flex";
+document.getElementById("telefono").onclick = () => modalTelefono.style.display = "flex";
+
+document.getElementById("cerrarCorreo").onclick = () => modalCorreo.style.display = "none";
+document.getElementById("cerrarTelefono").onclick = () => modalTelefono.style.display = "none";
+
+window.onclick = function(e) {
+if (e.target === modalCorreo) modalCorreo.style.display = "none";
+if (e.target === modalTelefono) modalTelefono.style.display = "none";
+};
