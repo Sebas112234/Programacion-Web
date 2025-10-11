@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Plantilla CV</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /*MENU*/
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0);
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    /*PORTADA*/
+    .portada {
+      height: 100vh;
+      background: url("fondo1.jpg") no-repeat center center;
+      background-size: cover;
+      position: relative;
+    }
+
+    .foto-circular {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #333;
+      position: absolute;
+      top: 80px; /* más abajo por el menú */
+      left: 20px;
+    }
+
+    .cuadro-texto {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    .icono {
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+      margin: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .icono:hover {
+      transform: scale(1.1);
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 40px 40px;
+      color: #333;
+    }
+
+    /*ACERCA DE MI*/
+    .acerca {
+      background: url("fondo2.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .acerca .titulo {
+      background: rgba(0, 0, 0);
+      padding: 20px 40px;
+      border-radius: 10px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .acerca .contenido {
+      background: rgba(255, 255, 255);
+      color: #333;
+      padding: 30px;
+      width: 60%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0);
+    }
+
+    /*FORMACIÓN ACADÉMICA*/
+    .formacion {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .bloque {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .titulo-cuadro {
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .cuadro {
+      width: 100%;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /*EXPERIENCIA LABORAL*/
+    .experiencia {
+      background: #e0e0e0;
+      padding: 40px;
+    }
+
+    .experiencia h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+/*SLIDER (EXPERIENCIA LABORAL)*/
+.slider-container {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.slide-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 calc(100% / 3); /* Muestra 3 imágenes a la vez */
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.slide img {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  
+}
+
+.controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 30px;
+}
+
+.controles img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.controles img:hover {
+  transform: scale(1.1);
+}
+
+
+    /*MODAL*/
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .cerrar {
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- MENU DE NAVEGACIÓN -->
+  <nav>
+    <a href="#principal">Principal</a>
+    <a href="#acerca">Acerca de mí</a>
+    <a href="#formacion">Formación Académica</a>
+    <a href="#experiencia">Experiencia Laboral</a>
+  </nav>
+
+  <div class="portada" id="principal">
+    <img src="sebastian.png" alt="Foto circular" class="foto-circular">
+    <div class="cuadro-texto">
+      <p>
+        Sebastian Israel Gonzalez Guerrero<br>
+        18 años<br>
+        22300944<br>
+        Desarrollo de Software<br>
+        Programacion movil<br>
+        7E<br>
+        C. Nueva Escocia 1885, Providencia 5a Secc., Guadalajara, Jal.
+      </p>
+      <img src="correo.png" alt="correo" id="correo" class="icono">
+      <img src="tel.png" alt="teléfono" id="telefono" class="icono">
+    </div>
+  </div>
+
+  <section class="acerca" id="acerca">
+    <div class="titulo">Acerca de mí</div>
+    <div class="contenido">
+    <p>
+	Soy un estudiante de software apasionado por la programación móvil y el manejo de bases de datos.  
+	Cuando no estoy programando, me gusta dibujar, jugar videojuegos o disfrutar de un buen partido de fútbol o voleibol.  
+	Siempre estoy aprendiendo cosas nuevas y buscando mejorar mis habilidades mientras me divierto en el camino.
+</p>
+
+  </div>
+  </section>
+
+  <section class="formacion" id="formacion">
+    <div class="bloque">
+      <div class="titulo-cuadro">Formación Académica</div>
+      <div class="cuadro">
+        <p>-Mecánica 1<br> -Química 1<br> -Inglés <br> -Lectura, Expresión Oral y Escrita<br> -Tecnologías de la Información<br> -Lógica<br> -Álgebra<br> -Fundamentos de Programación<br> -Geometría y Trigonometría<br> -Dibujo técnico<br> -Fundamentos de Electrónica<br> -Mantenimiento de Tecnologías de Información<br> -Programación<br> -Física<br> -Biología<br> </p>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <div class="titulo-cuadro">Formación Académica</div>
+      <div class="cuadro">
+        <p>-Ética<br> -Geometría Analítica<br> -Sistemas Digitales<br> -Ecología<br> -Cálculo diferencial<br> -Análisis y Diseño de Sistemas<br> -Infraestructura de Redes Locales<br> -Programación Orientada a Objetos<br> -Temas de Electrónica<br> -Administración<br> -Cálculo Integral<br> -Ciencia, Tecnología, Sociedad y Valores<br> -Bases de Datos<br> -Estructuras de Datos<br> -Enrutamiento de Redes </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="experiencia" id="experiencia">
+  <h1>Experiencia Laboral</h1>
+
+  <div class="slider-container">
+    <div class="slide-track">
+      <div class="slide"><img src="c1.jpg" class="foto-item" alt="1"></div>
+      <div class="slide"><img src="c2.jpg" class="foto-item" alt="2"></div>
+      <div class="slide"><img src="c3.jpg" class="foto-item" alt="3"></div>
+      <div class="slide"><img src="c4.jpg" class="foto-item" alt="4"></div>
+      <div class="slide"><img src="c5.jpg" class="foto-item" alt="5"></div>
+      <div class="slide"><img src="c6.jpg" class="foto-item" alt="6"></div>
+      <div class="slide"><img src="c7.jpg" class="foto-item" alt="7"></div>
+      <div class="slide"><img src="c8.jpg" class="foto-item" alt="8"></div>
+    </div>
+  </div>
+
+  <div class="controles">
+    <img src="flechai.png" id="prevBtn" alt="Anterior">
+    <img src="flechad.jpg" id="nextBtn" alt="Siguiente">
+  </div>
+</section>
+
+
+  
+  <div id="modalCorreo" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" id="cerrarCorreo">&times;</span>
+      <p><strong>Correo:</strong> a22300944@ceti.mx</p>
+    </div>
+  </div>
+
+  <div id="modalTelefono" class="modal">
+    <div class="modal-content">
+      <span class="cerrar" id="cerrarTelefono">&times;</span>
+      <p><strong>Telefono:</strong> 33-3329-7969</p>
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
