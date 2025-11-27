@@ -1,0 +1,51 @@
+/* style.css */
+body {
+  padding-top: 60px; /* espacio para toolbar fija */
+  background: #f2f6f8;
+}
+
+/* Header/portada */
+.header-banner {
+  background-size: cover;
+  background-position: center;
+  height: 380px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  font-family: 'Georgia', serif;
+  font-size: 5rem;
+    font-weight: bold;
+    color: #ffffff; /* o #ffd700 dorado */
+    text-shadow: 3px 3px 10px rgba(0,0,0,0.7);
+  background: rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* Tarjetas */
+.card-custom {
+  min-height: 320px;
+}
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Toolbar fija */
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1040;
+}
+
+/* Footer spacing */
+.container-cards {
+  padding-top: 18px;
+  padding-bottom: 40px;
+}
