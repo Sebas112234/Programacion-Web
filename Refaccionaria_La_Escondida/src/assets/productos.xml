@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+  <product>
+    <id>1</id>
+    <name>Filtro de aceite</name>
+    <price>120</price>
+    <imageUrl>assets/filtro.jpg</imageUrl>
+    <category>Motor</category>
+    <description>Filtro estándar</description>
+    <inStock>true</inStock>
+  </product>
+
+  <product>
+    <id>2</id>
+    <name>Bujía</name>
+    <price>75</price>
+    <imageUrl>assets/bujia.jpg</imageUrl>
+    <category>Encendido</category>
+    <description>Bujía NGK</description>
+    <inStock>yes</inStock>
+  </product>
+</products>
